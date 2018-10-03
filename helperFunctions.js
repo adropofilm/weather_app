@@ -9,6 +9,5 @@ const renderResponse = (res) => {
     }
 
     // manipulates responseField to render the modified response
-    //responseField.innerHTML = `<p>You might be interested in:</p><ol>${res.}</ol>`
-    //return
+
 }

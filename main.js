@@ -16,7 +16,7 @@ function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(getForecast);
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        responseField.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
 
@@ -36,21 +36,25 @@ const url = 'https://api.darksky.net/forecast/';
 
 // AJAX function:
 function getForecast (position) {
-
+    const proxyServer = 'https://cors-anywhere.herokuapp.com/';
     const longitude = position.coords.longitude;
     const latitude = position.coords.latitude;
-    const endpoint = `${url}${apiKey}/${latitude},${longitude}`;
+    const endpoint = `${proxyServer}${url}${apiKey}/${latitude},${longitude}`;
 
-    const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
     const xhr = new XMLHttpRequest();
 
-    xhr.responseType = 'json';
+    //xhr.responseType = 'json';
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
-            // Begin accessing JSON data here
-            //alert(response.timezone);
+            const responseField = document.getElementById("demo");
+            responseField.innerHTML = xhr.response;
+        }
+        else {
+            alert("It failed!");
+
         }
     }
     xhr.open('GET', endpoint);
+    xhr.setRequestHeader('Access-Control-Allow-Headers', 'X-Requested-With');
     xhr.send();
 }
