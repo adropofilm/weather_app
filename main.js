@@ -34,11 +34,12 @@ ______________________________________________________________________
  */
 
 // Information to reach Dark Sky API:
-const apiKey = '81741895358c06957f92a6aff5dc837c';
+const apiKey = config.MY_KEY;
 const url = 'https://api.darksky.net/forecast/';
 
 // AJAX function:
 function getForecast (position) {
+
     const longitude = position.coords.longitude;
     const latitude = position.coords.latitude;
     const endpoint = `${url}${apiKey}/${latitude}/${longitude}`;
