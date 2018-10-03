@@ -3,50 +3,56 @@
 
 //document.write('Find My Weather');
 
+/*
+______________________________________________________________________
+|                                                                     |
+|                      HTML5 Geolocation API:                         |
+|_____________________________________________________________________|
+
+ */
 
 // Get Location from browser:
 const responseField = document.getElementById("coordinates");
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        //navigator.geolocation.getCurrentPosition(setPosition);
+        navigator.geolocation.getCurrentPosition(getForecast);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
 
-function showPosition(position) {
-    responseField.innerHTML = "Lat: " + position.coords.latitude +
-        "<br>Long: " + position.coords.longitude;
-}
-
 window.onload = getLocation();
 
 /*
+______________________________________________________________________
+|                                                                     |
+|                             Dark Sky API                            |
+|_____________________________________________________________________|
+
+ */
 
 // Information to reach Dark Sky API:
 const apiKey = '81741895358c06957f92a6aff5dc837c';
 const url = 'https://api.darksky.net/forecast/';
 
-
 // AJAX function:
-const getForecast = () => {
-    const endpoint = `${url}${latitude}${longitude}`;
+function getForecast (position) {
+    const longitude = position.coords.longitude;
+    const latitude = position.coords.latitude;
+    const endpoint = `${url}${apiKey}/${latitude}/${longitude}`;
+    alert(endpoint);
 
     const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
     const xhr = new XMLHttpRequest();
-    xhr.responseType = 'json';
 
+    xhr.responseType = 'json';
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
-            // do stuff
+            //dosumn
         }
     }
-
     xhr.open('GET', endpoint);
     xhr.send();
 }
-
-getForecast();
-
-*/
