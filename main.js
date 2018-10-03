@@ -1,8 +1,6 @@
 // write the javascript code to pull the weather condition for your current location
 // you can get the browser location by using HTML5 Geolocation API
 
-//document.write('Find My Weather');
-
 /*
 ______________________________________________________________________
 |                                                                     |
@@ -16,7 +14,6 @@ const responseField = document.getElementById("coordinates");
 
 function getLocation() {
     if (navigator.geolocation) {
-        //navigator.geolocation.getCurrentPosition(setPosition);
         navigator.geolocation.getCurrentPosition(getForecast);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
@@ -42,8 +39,7 @@ function getForecast (position) {
 
     const longitude = position.coords.longitude;
     const latitude = position.coords.latitude;
-    const endpoint = `${url}${apiKey}/${latitude}/${longitude}`;
-    alert(endpoint);
+    const endpoint = `${url}${apiKey}/${latitude},${longitude}`;
 
     const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
     const xhr = new XMLHttpRequest();
@@ -51,7 +47,8 @@ function getForecast (position) {
     xhr.responseType = 'json';
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
-            //dosumn
+            // Begin accessing JSON data here
+            //alert(response.timezone);
         }
     }
     xhr.open('GET', endpoint);
