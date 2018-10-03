@@ -8,6 +8,9 @@ const renderResponse = (res) => {
         return
     }
 
+    const responseField = document.getElementById("demo");
+    responseField.innerHTML = res;
+
     // manipulates responseField to render the modified response
 
 }

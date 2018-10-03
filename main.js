@@ -10,7 +10,7 @@ ______________________________________________________________________
  */
 
 // Get Location from browser:
-const responseField = document.getElementById("coordinates");
+const responseField = document.getElementById("root");
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -39,18 +39,28 @@ function getForecast (position) {
     const proxyServer = 'https://cors-anywhere.herokuapp.com/';
     const longitude = position.coords.longitude;
     const latitude = position.coords.latitude;
-    const endpoint = `${proxyServer}${url}${apiKey}/${latitude},${longitude}`;
+    const exclude = '?units=si&exclude=minutely,hourly,alerts';
+    const endpoint = `${proxyServer}${url}${apiKey}/${latitude},${longitude}${exclude}`;
 
     const xhr = new XMLHttpRequest();
 
-    //xhr.responseType = 'json';
+    xhr.responseType = 'json';
     xhr.onreadystatechange = () => {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            const responseField = document.getElementById("demo");
-            responseField.innerHTML = xhr.response;
+        //xhr.readyState === XMLHttpRequest.DONE &&
+        if (xhr.status >= 200 && xhr.status < 400) {
+            const responseField = document.getElementById("root");
+
+            responseField.innerHTML = `Latitude: ${xhr.response.latitude} <br>
+                                        Longitude: ${xhr.response.longitude} <br>
+                                        Currently: ${xhr.response.currently.summary} <br>
+                                        Precipitation: ${xhr.response.currently.precipProbability*100}% <br>
+                                        Humidity: ${xhr.response.currently.humidity*100}% <br>
+                                        Wind: ${xhr.response.currently.windSpeed} <br>
+                                        Highs: ${xhr.response.daily.data[0].temperatureHigh* 9 / 5 + 32} <br>
+                                        Lows: ${xhr.response.daily.data[0].temperatureLow* 9 / 5 + 32}`;
         }
         else {
-            alert("It failed!");
+            console.log(xhr.status);
 
         }
     }
