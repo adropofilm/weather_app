@@ -35,9 +35,9 @@ const renderResponse = (res) => {
     const humidity = parseInt(res.currently.humidity*100);
     weatherData.setAttribute('class', 'card card-three');
     weatherData.innerHTML = `<div id = 'weather-data'> 
-                                   <div>  <img src = './images/wind.png' alt = 'wind-icon' class = 'weather-icons'> ${windSpeed} mph </div>
-                                   <div>  <img src = './images/umbrella.png' alt = 'umbrella-icon' class = 'weather-icons'> ${precipitation}%  </div>
-                                   <div>  <img src = './images/drop.png' alt = 'droplet-icon' class = 'weather-icons'> ${humidity}%  </div>
+                                   <div>  <img src = './images/wind.png' alt = 'wind-icon' class = 'weather-icons'> Wind:${windSpeed}mph</div>
+                                   <div>  <img src = './images/umbrella.png' alt = 'umbrella-icon' class = 'weather-icons'> Prec: ${precipitation}%</div>
+                                   <div>  <img src = './images/drop.png' alt = 'droplet-icon' class = 'weather-icons'> Hum: ${humidity}%  </div>
                             </div>`
     app.appendChild(weatherData);
 }
