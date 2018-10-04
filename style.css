@@ -1,30 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
     color: #FFFFFF;
     background-color: #78B8C1;
+    font-family: 'Source Code Pro', monospace;
 }
 
-.flex-container {
+#container {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
+
+    /* height: 400px;
+     align-items: center;*/
 }
 
-#root {
-    max-width: 1200px;
-    margin: 0 auto;
+.card {
+    text-align: center;
+    width: 26%;
 }
 
-
-@media screen and (min-width: 600px) {
-    .card {
-        flex: 1 1 calc(50% - 2rem);
-    }
+.card-two{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 5.5em;
 }
 
-@media screen and (min-width: 900px) {
-    .card {
-        flex: 1 1 calc(33% - 2rem);
-    }
+h1 {
+
+    text-align: center;
 }
+
+#container > h1
+{
+    flex: 0 1 100%;
+}
+

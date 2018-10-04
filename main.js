@@ -50,7 +50,6 @@ function getForecast (position) {
         //xhr.readyState === XMLHttpRequest.DONE &&
         if (xhr.status >= 200 && xhr.status < 400) {
             //const responseField = document.getElementById("root");
-
             renderResponse(xhr.response);
         }
         else {
