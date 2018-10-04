@@ -1,12 +1,21 @@
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+    color: #FFFFFF;
+    background-color: #78B8C1;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
 #root {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-}
 
 @media screen and (min-width: 600px) {
     .card {
