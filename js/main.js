@@ -48,6 +48,7 @@ function getForecast (position) {
         }
         else {
             // sumthn went wrong bud :(
+            console.log('Error');
         }
     }
     xhr.open('GET', endpoint);
@@ -82,6 +83,7 @@ function getCity(latitude, longitude) {
         }
         else {
             // sumthn went wrong bud :(
+            console.log('Error');
         }
     }
     xhr.open('GET', endpoint);

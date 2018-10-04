@@ -1,7 +1,5 @@
 // Formats response to look presentable on webpage
 
-const app = document.getElementById('container');
-
 const renderResponse = (res) => {
     const app = document.getElementById('container');
     if(!res){
@@ -13,7 +11,6 @@ const renderResponse = (res) => {
     icon.setAttribute('class', 'card card-one');
     icon.innerHTML = `<img src = ${getIcon(res.currently.icon)} alt = 'Weather Icon' id = 'icon'>`;
     app.appendChild(icon);
-
 
     // Append temperature (current, high, low):
     const tempData = document.createElement('div');
@@ -61,45 +58,32 @@ function getIcon(icon) {
         case 'clear-day':
             iconCode = './images/clearday.png';
             return iconCode;
-            break;
-
         case 'clear-night':
             iconCode = './images/clearnight.png';
             return iconCode;
-            break;
-
         case 'partly-cloudy-day':
             iconCode = './images/cloudyday.png';
             return iconCode;
-            break;
-
         case 'partly-cloudy-night':
             iconCode = './images/cloudynight.png';
             return iconCode;
-            break;
         case 'cloudy':
             iconCode = './images/cloudy.png';
             return iconCode;
-            break;
         case 'rain':
             iconCode = './images/rain.png';
             return iconCode;
-            break;
         case 'sleet':
             iconCode = './images/sleet.png';
             return iconCode;
-            break;
         case 'snow':
             iconCode = './images/snow.png';
             return iconCode;
-            break;
         case 'wind':
             iconCode = './images/wind.png';
             return iconCode;
-            break;
         case 'fog':
             iconCode = './images/fog.png';
             return iconCode;
-            break;
     }
 }
