@@ -42,7 +42,6 @@ function getForecast (position) {
     const exclude = '?units=si&exclude=minutely,hourly,alerts';
     const endpoint = `${proxyServer}${url}${apiKey}/${latitude},${longitude}${exclude}`;
 
-    // google api: AIzaSyD_BHWfpCisekLTV9mvbokerPbOoh3muyE
     const xhr = new XMLHttpRequest();
 
     xhr.responseType = 'json';
