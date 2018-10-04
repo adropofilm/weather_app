@@ -1,0 +1,19 @@
+{
+  "name": "weather_proj",
+  "version": "1.0.0",
+  "description": "Simple weather app for desktop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adropofilm/weather_proj.git"
+  },
+  "author": "fatima mohamed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adropofilm/weather_proj/issues"
+  },
+  "homepage": "https://github.com/adropofilm/weather_proj#readme"
+}
