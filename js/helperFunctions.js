@@ -17,25 +17,33 @@ const renderResponse = (res) => {
     // Append icon:
     const icon = document.createElement('div');
     icon.setAttribute('class', 'card card-one');
-    icon.innerHTML = `<img src = ${getIcon(res.currently.icon)} alt = 'Weather Icon'>`;
+    icon.innerHTML = `<img src = ${getIcon(res.currently.icon)} alt = 'Weather Icon' id = 'icon'>`;
     app.appendChild(icon);
 
-    // Append temperature:
+    // Append temperature (current, high, low):
     const tempData = document.createElement('div');
     const highTemp = parseInt(res.daily.data[0].temperatureHigh* 9 / 5 + 32);
     const lowTemp = parseInt(res.daily.data[0].temperatureLow* 9 / 5 + 32);
+    const currTemp = parseInt(res.currently.temperature* 9/5+32);
     tempData.setAttribute('class', 'card card-two');
-    tempData.innerHTML = `${parseInt(res.currently.temperature* 9/5+32)} <p id="hl-temp">${lowTemp}/${highTemp}</p>`;
+
+    if(currTemp < lowTemp) {
+        tempData.innerHTML = `${lowTemp} <p id="hl-temp">${currTemp}/${highTemp}</p>`;
+    }
+    else {
+        tempData.innerHTML = `${currTemp} <p id="hl-temp">${lowTemp}/${highTemp}</p>`;
+    }
+
     app.append(tempData);
 
-    // Append weather data to second row, 1st col:
+    // Append weather data:
     const weatherData = document.createElement('div');
     weatherData.setAttribute('class', 'card card-three');
-    weatherData.innerHTML = `
-                                        Currently: ${res.currently.summary} <br>
-                                        Precipitation: ${res.currently.precipProbability*100}% <br>
-                                        Humidity: ${res.currently.humidity*100}% <br>
-                                        Wind: ${res.currently.windSpeed}`;
+    weatherData.innerHTML = `<div id = 'weather-data'> 
+                                   <div>  <img src = './images/wind.png' alt = 'wind-icon' class = 'weather-icons'> ${res.currently.windSpeed}  </div>
+                                   <div>  <img src = './images/umbrella.png' alt = 'umbrella-icon' class = 'weather-icons'> ${res.currently.precipProbability*100}%  </div>
+                                   <div>  <img src = './images/drop.png' alt = 'droplet-icon' class = 'weather-icons'> ${res.currently.humidity*100}%  </div>
+                            </div>`
     app.appendChild(weatherData);
 }
 
