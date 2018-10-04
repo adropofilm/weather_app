@@ -26,7 +26,7 @@ ______________________________________________________________________
  */
 
 // Request:
-    let longitude, latitude;
+let longitude, latitude;
 
 function getForecast (position) {
 
@@ -48,7 +48,6 @@ function getForecast (position) {
         }
         else {
             // sumthn went wrong bud :(
-            console.log('Error');
         }
     }
     xhr.open('GET', endpoint);
@@ -72,8 +71,8 @@ function getCity(latitude, longitude) {
     const apiKey = `&key=${config.GOOGLE_KEY}`;
     const url = 'https://maps.googleapis.com/maps/api/geocode/json';
     const latlong = `?latlng=${longitude},${latitude}`;
-
-    const endpoint = `${url}${latlong}${apiKey}`;
+    const locality = '&result_type=locality';
+    const endpoint = `${url}${latlong}${locality}${apiKey}`;
 
     const xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
@@ -83,7 +82,6 @@ function getCity(latitude, longitude) {
         }
         else {
             // sumthn went wrong bud :(
-            console.log('Error');
         }
     }
     xhr.open('GET', endpoint);

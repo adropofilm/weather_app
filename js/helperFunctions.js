@@ -45,11 +45,12 @@ const renderResponse = (res) => {
 const renderCityResponse = (res) => {
     // Append header:
     const app = document.getElementById('container');
-    const city = res.results[0].address_components[3].long_name;
+    const city = res.results[0].formatted_address;
     const header = document.createElement('h1');
     header.setAttribute('id', 'header');
     header.innerHTML = `Today in ${city} `;
     app.appendChild(header);
+
 }
 
 function getIcon(icon) {
