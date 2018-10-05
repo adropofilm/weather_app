@@ -79,6 +79,7 @@ function getCity(latitude, longitude) {
     xhr.onreadystatechange = () => {
         if (xhr.status >= 200 && xhr.status < 400) {
             renderCityResponse(xhr.response);
+
         }
         else {
             // sumthn went wrong bud :(
