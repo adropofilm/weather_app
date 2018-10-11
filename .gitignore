@@ -2,4 +2,3 @@ config.js
 *.xml
 *.iml
 *.name
-*.DS_Store
